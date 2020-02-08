@@ -1,0 +1,103 @@
+﻿@model VojsaceCinema.Models.Student
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StudentName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentEmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StudentEmail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StudentId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentEnrolledDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StudentEnrolledDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsRegular)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsRegular)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Enrollments)
+        </dt>
+        <dd class="col-sm-10">
+            <table class="table table-striped">
+                <tr>
+                    <th>Course Title</th>
+                    <th>Semester Year</th>
+                </tr>
+                @foreach (var item in Model.Enrollments)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Course.CourseName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Course.SemestarYear)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Activities)
+        </dt>
+        <dd class="col-sm-10">
+            <table class="table table-striped">
+                <tr>
+                    <th>Activities</th>
+                    <th>Date Presented</th>
+                </tr>
+                @foreach (var item in Model.Activities)
+                {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ActivityType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatePresented)
+                </td>
+            </tr>
+                }
+            </table>
+        </dd>
+
+
+    </dl>
+
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
